@@ -1,0 +1,52 @@
+//Agregar para obtener material design debajo en XAML
+
+TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+
+//Codigo en app.xaml
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Teal.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.LightBlue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+
+
+<materialDesign:ColorZone Mode="PrimaryDark" Background="Teal" HorizontalAlignment="Stretch" Height="33" >
+
+<materialDesign:PackIcon Kind="WindowClose" Background="Teal"/>
+
+
+
+<connectionStrings>
+        <add name="Conectar"
+            connectionString="workstation id=TiendaPrueba.mssql.somee.com;packet size=4096;user id=Fonseca1998_SQLLogin_1;pwd=y2lp86ek6w;data source=TiendaPrueba.mssql.somee.com;persist security info=False;initial catalog=TiendaPrueba"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+
+
+
+SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = ConfigurationManager.ConnectionStrings["Conectar"].ToString();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand();
+            comando.CommandText = "Select * From [Personas]";
+            comando.Connection = conexion;
+            SqlDataReader leer = comando.ExecuteReader();
+            ventana.ItemsSource = leer;
+
+ public static SqlConnection conex = new SqlConnection(@"workstation id=TiendaPrueba.mssql.somee.com;packet size=4096;user id=Fonseca1998_SQLLogin_1;pwd=y2lp86ek6w;data source=TiendaPrueba.mssql.somee.com;persist security info=False;initial catalog=TiendaPrueba");
+        
+
+Personas incompleto, crear CRUD
+- Productos, crear CRUD
+- Tipo_operaciones, crear CRUD
